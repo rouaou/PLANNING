@@ -1,0 +1,112 @@
+<section class="content">
+  <div class="content-block">
+    <div class="block-header">
+      <!-- breadcrumb -->
+      <app-breadcrumb [title]="'Doctor'" [items]="['Appointment']" [active_item]="'Requests'"></app-breadcrumb>
+    </div>
+    <!-- Widgets -->
+
+    <!-- #END# Widgets -->
+    <div class="row clearfix">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="card">
+          <div class="header">
+            <h2>
+              Booked Appointment</h2>
+            <button mat-icon-button [matMenuTriggerFor]="menu" class="header-dropdown">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon>add_circle_outline</mat-icon>
+                <span>Add</span>
+              </button>
+              <button mat-menu-item disabled>
+                <mat-icon>delete_outline</mat-icon>
+                <span>Delete</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>refresh</mat-icon>
+                <span>Refresh</span>
+              </button>
+            </mat-menu>
+          </div>
+          <div class="tableBody">
+            <div class="table-responsive">
+              <table class="table table-hover ">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Patient</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <!-- <tbody>
+                  <tr *ngFor="let app of appointments">
+                    <td class="table-img">
+                      <img src="{{app.patient.userImage}}" alt="">
+                    </td>
+                    <td>{{app.title}}</td>-->
+                    <!-- <td><a href="mailto:test@gmail.com"> Dr.Sarah Smith </a></td> -->
+                   <!-- <td>{{app.startDate}}</td>
+                    <td>{{app.endDate}}</td>
+                    <td><a href="mailto:{{app.patient.email}}"> Dr.{{app.patient.firstName}} {{app.patient.LastName}}</a></td>
+                    <td>
+                      <div class="badge col-red" *ngIf="app.status === 0">Pending</div>
+                      <div class="badge col-green" *ngIf="app.status === 1">Accepted</div>
+                    </td>
+                    <td>
+                      <button mat-icon-button class="tbl-action-btn" (click)="acceptAppointment(app)">
+                        <app-feather-icons [icon]="'check-circle'" [class]="'tbl-fav-edit'"></app-feather-icons>
+                      </button>
+                      <button mat-icon-button class="tbl-action-btn" (click)="refuseAppointment(app)">
+                        <app-feather-icons [icon]="'x-circle'" [class]="'tbl-fav-delete'"></app-feather-icons>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody> -->
+                <tbody>
+                  <tr *ngFor="let app of appointments">
+                    <td class="table-img">
+                      <img src="{{app?.patient?.userImage}}" alt="">
+                    </td>
+                    <td>{{app?.title}}</td>
+                    <td>{{app?.startDate}}</td>
+                    <td>{{app?.endDate}}</td>
+                    <td>
+                      <ng-container *ngIf="app?.patient">
+                        <a href="mailto:{{app?.patient?.email}}"> Dr.{{app?.patient?.firstName}} {{app?.patient?.LastName}}</a>
+                      </ng-container>
+                      <ng-container *ngIf="!app?.patient">
+                        <span class="text-danger">Patient information missing</span>
+                      </ng-container>
+                    </td>
+                    <td>
+                      <div class="badge col-red" *ngIf="app?.status === 0">Pending</div>
+                      <div class="badge col-green" *ngIf="app?.status === 1">Accepted</div>
+                    </td>
+                    <td>
+                      <button mat-icon-button class="tbl-action-btn" (click)="acceptAppointment(app)">
+                        <app-feather-icons [icon]="'check-circle'" [class]="'tbl-fav-edit'"></app-feather-icons>
+                      </button>
+                      <button mat-icon-button class="tbl-action-btn" (click)="refuseAppointment(app)">
+                        <app-feather-icons [icon]="'x-circle'" [class]="'tbl-fav-delete'"></app-feather-icons>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="alert alert-message rounded mt-2" *ngIf="!appointments?.length">
+                <i class='fas fa-exclamation-triangle' style="font-size: 16px;"><strong> No Request Found!</strong></i>
+                        </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

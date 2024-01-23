@@ -1,0 +1,129 @@
+<div class="addContainer">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+
+        <div class="modal-about">
+          Update Vaccination
+        </div>
+      </div>
+    </div>
+    <button mat-icon-button (click)="dialogRef.close();" class="modal-close-button" aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+  <form [formGroup]="vaccinationForm" (ngSubmit)="onSubmit">
+
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Vaccination Name </mat-label>
+            <input matInput formControlName="vacNm" required>
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix></mat-icon>
+            <mat-error >
+              Vaccination Name is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Disease Name</mat-label>
+            <input matInput formControlName="vacDrg" required>
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix></mat-icon>
+            <mat-error >
+             Vaccine Drug is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <!--<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Vaccination Number</mat-label>
+            <input matInput formControlName="vaccination_Key" equired>
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix></mat-icon>
+            <mat-error >
+              Vaccination Number is required
+            </mat-error>
+          </mat-form-field>
+        </div>-->
+
+      </div>
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Type</mat-label>
+            <mat-select formControlName="vacTyp" required>
+              <mat-option [value]="'  inactivated or attenuated virus'">
+                Inactivated/Attenuated virus
+              </mat-option>
+              <mat-option [value]="'  protein subunit based'">
+                Protein subunit based
+              </mat-option>
+              <mat-option [value]="'  toxoid based'">
+                Toxoid based
+              </mat-option>
+              <mat-option [value]="'  viral vector based'">
+                Viral vector based
+              </mat-option>
+              <mat-option [value]="'  messenger RNA'">
+                Messenger RNA
+              </mat-option>
+              </mat-select>
+              </mat-form-field>
+        </div>
+
+        <!--<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>status</mat-label>
+            <input matInput formControlName="vaccinationRcrdSts" required>
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix></mat-icon>
+            <mat-error >
+             Status is required
+            </mat-error>
+          </mat-form-field>
+        </div>-->
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width " appearance="outline">
+            <mat-label>Side Effects </mat-label>
+            <input matInput formControlName="side_eff" required>
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix></mat-icon>
+            <mat-error >
+             Side Effect is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+        <mat-form-field class="example-full-width " appearance="outline">
+          <mat-label>Manufacturer </mat-label>
+          <input matInput formControlName="mnf" required>
+          <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix></mat-icon>
+          <mat-error >
+           Manufacturer is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+        <div class="example-full-width" appearance="outline">
+          <mat-label>Target Disease</mat-label>
+          <input matInput formControlName="targetDis" required>
+          <button mat-raised-button color="primary" type="submit">Code CIM10</button>
+        </div>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Save</button>
+             <button mat-raised-button color="warn"(click)="onNoClick()">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+</div>
+
+

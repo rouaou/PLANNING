@@ -1,0 +1,48 @@
+/* work-availability.component.css */
+
+.work-availability {
+  max-width: 800px;
+  margin: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.availability-list {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.availability-item {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.day-time {
+  margin-bottom: 10px;
+}
+
+.staff-list ul {
+  padding: 0;
+  list-style: none;
+}
+
+.add-availability-form {
+  display: none;
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Add more styles based on your preference */

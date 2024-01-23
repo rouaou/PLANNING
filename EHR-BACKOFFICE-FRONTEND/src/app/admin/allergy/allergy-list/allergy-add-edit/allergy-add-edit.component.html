@@ -1,0 +1,279 @@
+<div class="addContainer">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+
+        <div class="AddAllergy" style="color: #111827; font-size: 20px; font-family: Inter; font-weight: 600; line-height: 32px; word-wrap: break-word">Add Allergy</div>
+      </div>
+    </div>
+    <button mat-icon-button (click)="dialogRef.close();" class="modal-close-button" aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+  <form [formGroup]="allergyForm" (ngSubmit)="onSubmit">
+
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Allergy Name </mat-label>
+            <input matInput formControlName="algNm" required>
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix></mat-icon>
+            <mat-error >
+              Allergy Name is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Symptoms</mat-label>
+            <mat-select [formControl]="algSym" multiple (click)="loadSymptoms()"  (selectionChange)="onSymptomsSelectionChange()">
+              <mat-option *ngFor="let symptom of symptomList" [value]="symptom.symptom_Key">{{symptom.symName }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <!--<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Allergy Number</mat-label>
+            <input matInput formControlName="allergy_Key" equired>
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix></mat-icon>
+            <mat-error >
+              Allergy Number is required
+            </mat-error>
+          </mat-form-field>
+        </div>-->
+
+      </div>
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Type</mat-label>
+            <mat-select formControlName="algTyp" required>
+              <mat-option [value]="'  Hay fever'">
+               Hay Fever
+              </mat-option>
+              <mat-option [value]="'Food Allergy'">
+               Food Allergy
+              </mat-option>
+              <mat-option [value]="'insect sting allergy'">
+              Insect sting allergy
+               </mat-option>
+               <mat-option [value]="'Drug allergy'">
+                Drug allergy
+                 </mat-option>
+                 <mat-option [value]="'Atopic dermatitis'">
+                  Atopic dermatitis
+                   </mat-option>
+                   <mat-option [value]="'Anaphylaxis'">
+                    Anaphylaxis
+                     </mat-option>
+
+            </mat-select>
+              </mat-form-field>
+        </div>
+
+
+        <!--<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>status</mat-label>
+            <input matInput formControlName="allergyRcrdSts" required>
+
+            <mat-error >
+             Status is required
+            </mat-error>
+          </mat-form-field>
+        </div>-->
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width " appearance="outline">
+            <mat-label>Gravity</mat-label>
+            <mat-select formControlName="algGrv" required>
+
+              <mat-option [value]="'  Mild'">
+               Mild
+              </mat-option>
+              <mat-option [value]="'Severe'">
+               Severe
+              </mat-option>
+              <mat-option [value]="' Very Serious'">
+              Very Serious
+               </mat-option>
+            </mat-select>
+            <mat-error >
+             gravity is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="algDesc"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Save</button>
+             <button mat-raised-button color="warn"(click)="onNoClick()">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<!--<div class="addContainer">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+
+        <div class="modal-about">
+          dialogTitle
+        </div>
+      </div>
+    </div>
+    <button mat-icon-button (click)="dialogRef.close();" class="modal-close-button" aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+  <form [formGroup]="allergyForm" (ngSubmit)="onSubmit">
+
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Allergy Name </mat-label>
+            <input matInput formControlName="algNm" required>
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix>assignment</mat-icon>
+            <mat-error >
+              Allergy Name is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Allergy Number</mat-label>
+            <input matInput formControlName="allergy_Key" required>
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix>call</mat-icon>
+            <mat-error >
+              Allerrgy Number is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class = "row">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+        <mat-form-field class="example-full-width " appearance="outline">
+          <mat-label>Type </mat-label>
+          <mat-select formControlName="algTyp" required>
+            <mat-option [value]="'  Hay fever'">
+             Hay Fever
+            </mat-option>
+            <mat-option [value]="'Food Allergy'">
+             Food Allergy
+            </mat-option>
+            <mat-option [value]="'insect sting allergy'">
+            Insect sting allergy
+             </mat-option>
+             <mat-option [value]="'Drug allergy'">
+              Drug allergy
+               </mat-option>
+               <mat-option [value]="'Atopic dermatitis'">
+                Atopic dermatitis
+                 </mat-option>
+                 <mat-option [value]="'Anaphylaxis'">
+                  Anaphylaxis
+                   </mat-option>
+
+          </mat-select>
+
+        </mat-form-field>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <div class="PxPlus" style="width: 20px; height: 20px; position: relative">
+              <div class="Vector" style="width: 0px; height: 13px; left: 10px; top: 3.50px; position: absolute; border: 0.75px #6B7280 solid"></div>
+              <div class="Vector" style="width: 13px; height: 0px; left: 3.50px; top: 10px; position: absolute; border: 0.75px #6B7280 solid"></div>
+            </div>
+            <mat-label>Symptoms</mat-label>
+            <input matInput formControlName="algSym" required>
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix>call </mat-icon>
+            <mat-error >
+             Symptoms are required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        </div>
+        </div>
+        <div class=" row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>status</mat-label>
+            <input matInput formControlName="allergyRcrdSts" required>
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix>call </mat-icon>
+            <mat-error >
+             Status is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width " appearance="outline">
+            <mat-label>Gravity </mat-label>
+            <mat-select formControlName="algGrv" required>
+              <mat-option [value]="'  Mild'">
+               Mild
+              </mat-option>
+              <mat-option [value]="'Severe'">
+               Severe
+              </mat-option>
+              <mat-option [value]="' Very Serious'">
+              Very Serious
+               </mat-option>
+            </mat-select>
+
+          </mat-form-field>
+        </div>
+      </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="algDesc">
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix> computer </mat-icon>
+
+          </mat-form-field>
+        </div>
+
+
+
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Save</button>
+             <button mat-raised-button color="warn"(click)="onNoClick()">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+</div>-->
+
+
+
+
+

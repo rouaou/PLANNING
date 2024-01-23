@@ -1,0 +1,59 @@
+<div class="addContainer">
+  <div class="contact-form">
+    <div class="modalHeader">
+      <div class="editRowModal">
+        <div class="modalHeader clearfix">
+          <div class="modal-about">
+
+            <h2>Assign Equipment</h2>
+          </div>
+        </div>
+      </div>
+      <button mat-icon-button (click)="dialogRef.close()" class="modal-close-button" aria-label="Close dialog">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div mat-dialog-content>
+      <form class="register-form m-4" [formGroup]="childForm!">
+
+       <div class="row">
+
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width">
+            <mat-label>Equipment</mat-label>
+            <mat-select formControlName="equipment" required multiple>
+              <mat-optgroup *ngIf="mobileEquipments.length > 0" label="Mobile Equipments">
+                <mat-option *ngFor="let equipment of mobileEquipments" [value]="equipment">
+                  {{ equipment.equipmentLabel }}
+                </mat-option>
+              </mat-optgroup>
+
+              <mat-optgroup *ngIf="fixedEquipments.length > 0" label="Fixed Equipments">
+                <mat-option *ngFor="let equipment of fixedEquipments" [value]="equipment">
+                  {{ equipment.equipmentLabel }}
+                </mat-option>
+              </mat-optgroup>
+            </mat-select>
+            <mat-error *ngIf="childForm?.get('equipment')?.hasError('required')">Required field</mat-error>
+          </mat-form-field>
+        </div>
+       </div>
+
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+            <div class="example-button-row">
+              <button mat-raised-button color="primary" [disabled]="!childForm?.valid" [mat-dialog-close]="1"
+                (click)="confirmAddChild()">
+                Add equipment
+              </button>
+              <button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

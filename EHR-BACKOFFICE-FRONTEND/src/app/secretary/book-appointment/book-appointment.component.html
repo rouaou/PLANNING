@@ -1,0 +1,172 @@
+<section class="content">
+  <div class="content-block">
+    <div class="block-header">
+      <!-- breadcrumb -->
+      <app-breadcrumb [title]="'Add appointment'" [items]="" [active_item]="'Add appointment'"></app-breadcrumb>
+    </div>
+    <div class="row clearfix">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+          <div class="header">
+            <h2>Add Appointment</h2>
+
+          </div>
+          <div class="body">
+            <form class="register-form m-4" [formGroup]="appointmentForm">
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                  <mat-form-field class="example-full-width mb-3" appearance="outline">
+                    <mat-label>rendez-vous</mat-label>
+                    <input type="text" matInput formControlName="title" required>
+                    <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix>turned_in_not</mat-icon>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                  <mat-form-field class="example-full-width mb-3" appearance="outline">
+                    <mat-label>Mode de rendezVous</mat-label>
+                    <mat-select formControlName="categoryAppoint" required>
+                      <mat-option [value]="'urgent'">
+                        Urgent
+                      </mat-option>
+                      <mat-option [value]="'normal'">
+                        Normal
+                      </mat-option>
+
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+             <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                  <mat-form-field class="example-full-width mb-3" appearance="outline">
+                    <mat-label>Select Service</mat-label>
+                    <mat-select formControlName="service" (selectionChange)="onServiceChange()">
+                      <mat-option *ngFor="let service of services" [value]="service">
+                        {{service.serviceNm}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                  <!-- <mat-form-field *ngIf="action==='edit'" class="example-full-width mb-3" appearance="outline">
+                    <mat-label>Select Patient</mat-label>
+                    <mat-select formControlName="patient">
+                      <mat-option *ngFor="let patient of Patients" [value]="patient.firstName">
+                        {{patient.firstName}} {{patient.lastName}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>-->
+                  <mat-form-field class="example-full-width mb-3" appearance="outline">
+                    <mat-label>Select Patient</mat-label>
+                    <mat-select formControlName="patient">
+                      <mat-option *ngFor="let patient of Patients" [value]="patient">
+                        {{patient.firstName}} {{patient.lastName}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                  <!-- <mat-form-field *ngIf="action==='edit' " class="example-full-width mb-3" appearance="outline">
+                    <mat-label>Select staff </mat-label>
+                    <mat-select formControlName="staff">
+                      <mat-option *ngFor="let staff of staffs" [value]="staff.firstName">
+                        Dr.{{staff.firstName}} {{staff.lastName}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field> -->
+                  <mat-form-field class="example-full-width mb-3" appearance="outline">
+                    <mat-label>Select doctor</mat-label>
+                    <mat-select formControlName="staff">
+                      <mat-option *ngFor="let staff of staffs" [value]="staff">
+                        Dr.{{ staff.firstName }} {{ staff.lastName }} ({{staff.speciality}})
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                  <!-- <mat-form-field *ngIf="action==='edit' " class="example-full-width mb-3" appearance="outline">
+                    <mat-label>Select staff </mat-label>
+                    <mat-select formControlName="staff">
+                      <mat-option *ngFor="let staff of staffs" [value]="staff.firstName">
+                        Dr.{{staff.firstName}} {{staff.lastName}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field> -->
+                  <mat-form-field class="example-full-width mb-3" appearance="outline">
+                    <mat-label>Select equipment</mat-label>
+                    <mat-select formControlName="equipment">
+                      <mat-option *ngFor="let equipment of Equipments" [value]="equipment">
+                        {{equipment.equipmentLabel}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+
+                </div>
+              </div>
+              <div class="row">
+                <mat-form-field class="example-full-width mb-3" appearance="outline">
+                  <mat-label>Start date</mat-label>
+                  <input matInput formControlName="startDate" [owlDateTimeTrigger]="startDate" [owlDateTime]="startDate"
+                    placeholder="Choose a date" required>
+                  <mat-icon matSuffix [owlDateTimeTrigger]="startDate" class="date-icon">today</mat-icon>
+                  <owl-date-time #startDate></owl-date-time>
+                  <mat-error *ngIf="appointmentForm?.get('startDate')?.hasError('required')">
+                    Please select a date
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width mb-3" appearance="outline">
+                  <mat-label>End date</mat-label>
+                  <input matInput formControlName="endDate" [owlDateTimeTrigger]="endDate" [owlDateTime]="endDate"
+                    placeholder="Choose a date" required>
+                  <mat-icon matSuffix [owlDateTimeTrigger]="endDate" class="date-icon">today</mat-icon>
+                  <owl-date-time #endDate></owl-date-time>
+                  <mat-error *ngIf="appointmentForm?.get('endDate')?.hasError('required')">
+                    Please select a date
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                  <mat-form-field class="example-full-width mb-3" appearance="outline">
+                    <mat-label>Event Details</mat-label>
+                    <textarea matInput formControlName="details"></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
+                  <div class="example-button-row">
+                    <button mat-raised-button color="primary" [type]="submit" [disabled]="!appointmentForm.valid"
+                      (click)="confirmAdd()">Save</button>
+                  </div>
+                </div>
+                <!-- <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+                  <div class="example-button-row" *ngIf="showDeleteBtn">
+                    <button mat-mini-fab aria-label color="warn" (click)="deleteEvent()">
+                      <mat-icon class="font-20">delete</mat-icon>
+                    </button>
+                  </div>
+                </div> -->
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

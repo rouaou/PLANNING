@@ -1,0 +1,148 @@
+<div class="addContainer">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+
+        <div class="modal-about">
+          Update Biological Analyse
+        </div>
+      </div>
+    </div>
+    <button mat-icon-button (click)="dialogRef.close();" class="modal-close-button" aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+  <form [formGroup]="analyseForm" (ngSubmit)="onSubmit">
+
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Analyse Name </mat-label>
+            <input matInput formControlName="ansNm" required>
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix></mat-icon>
+            <mat-error >
+              Analyse Name is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width " appearance="outline">
+            <mat-label>Type </mat-label>
+            <mat-select formControlName="bioAnsTyp" required>
+              <mat-option [value]="'  Hematology'">
+                Hematology
+              </mat-option>
+              <mat-option [value]="'clinical biochemistry'">
+                Clinical biochemistry
+              </mat-option>
+              <mat-option [value]="'Hormone'">
+              Hormone
+               </mat-option>
+               <mat-option [value]="'Immunology and serology'">
+                Immunology and serology
+                 </mat-option>
+                 <mat-option [value]="'microbiology'">
+                 Microbiology
+                   </mat-option>
+                   <mat-option [value]="'genetic'">
+                    Genetic
+                     </mat-option>
+                     <mat-option [value]="'cytology and histology'">
+                      cytology and histology
+                       </mat-option>
+
+
+            </mat-select>
+
+
+          </mat-form-field>
+          </div>
+        <!--<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Analyse Number</mat-label>
+            <input matInput formControlName="analyse_Key" required>
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix>call</mat-icon>
+            <mat-error >
+              Analyse Number is required
+            </mat-error>
+          </mat-form-field>
+        </div>-->
+
+
+        <!--<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>status</mat-label>
+            <input matInput formControlName="analyseRcrdSts" required>
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix>call </mat-icon>
+            <mat-error >
+             Status is required
+            </mat-error>
+          </mat-form-field>
+        </div>-->
+</div>
+
+<div class = "row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width " appearance="outline">
+            <mat-label>Max Ref </mat-label>
+            <input matInput formControlName="maxRef">
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix></mat-icon>
+            <mat-error >
+              Max ref is required
+            </mat-error>
+
+          </mat-form-field>
+        </div>
+
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Min Ref</mat-label>
+            <input matInput formControlName="minRef">
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix></mat-icon>
+
+          </mat-form-field>
+        </div>
+
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Unit mesure</mat-label>
+            <input matInput formControlName="unitMesure">
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix></mat-icon>
+
+          </mat-form-field>
+        </div>
+
+</div>
+
+<div class = "row">
+
+  <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-2">
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="bioAnsDesc" required>
+      <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix></mat-icon>
+
+    </mat-form-field>
+  </div>
+
+</div>
+
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Save</button>
+             <button mat-raised-button color="warn"(click)="onNoClick()">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+</div>
+
+
+

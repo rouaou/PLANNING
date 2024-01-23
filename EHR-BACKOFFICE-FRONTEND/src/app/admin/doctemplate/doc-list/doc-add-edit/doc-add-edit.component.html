@@ -1,0 +1,114 @@
+<!--<div class="addContainer">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+
+        <div class="modal-about">
+          {{dialogTitle}}
+        </div>
+      </div>
+    </div>
+    <button mat-icon-button (click)="dialogRef.close();" class="modal-close-button" aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+  <form [formGroup]="documentForm" (ngSubmit)="onSubmit">
+
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Title </mat-label>
+            <input matInput formControlName="title" required>
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix></mat-icon>
+            <mat-error >
+              Title is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Format</mat-label>
+            <mat-select formControlName="format" required>
+              <mat-option [value]="'word'">
+                word
+              </mat-option>
+              <mat-option [value]="'Pdf'">
+               Pdf
+              </mat-option>
+              <mat-option [value]="'Excel'">
+              Excel
+              </mat-option>
+              </mat-select>
+              </mat-form-field>
+        </div>
+        <!--<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label> Number</mat-label>
+            <input matInput formControlName="document_Key" equired>
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix>call</mat-icon>
+            <mat-error >
+             Number is required
+            </mat-error>
+          </mat-form-field>
+        </div>-->
+
+      <!--</div>
+      <div class="row">
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="desc" required>
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix> </mat-icon>
+
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>item</mat-label>
+            <input matInput formControlName="item" required>
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix></mat-icon>
+
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width " appearance="outline">
+            <mat-label>Item Name </mat-label>
+            <input matInput formControlName="itemNm" required>
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix></mat-icon>
+          </mat-form-field>
+        </div>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+        <mat-form-field class="example-full-width " appearance="outline">
+          <mat-label>Path </mat-label>
+          <button mat-icon-button matSuffix>
+            <mat-icon>add</mat-icon>
+            <textarea matInput formControlName="path"></textarea>
+          </button>
+        </mat-form-field>
+      </div>
+      <!--<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+        <div class="example-full-width" appearance="outline">
+          <mat-label>Status</mat-label>
+          <input matInput formControlName="documentRcrdSts" required>
+        </div>
+      </div>-->
+      <!--</div>
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Save</button>
+             <button mat-raised-button color="warn"(click)="onNoClick()">Cancel</button>
+
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+</div>-->
+
+

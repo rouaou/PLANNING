@@ -1,0 +1,205 @@
+<div class="addContainer">
+  <div class="modalHeader" style="margin-bottom: 20px;">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <!--<img [src]='' alt="avatar">-->
+        <div class="modal-about">
+          <!--{{dialogTitle}}-->
+          <h2>Update Doctor</h2>
+        </div>
+      </div>
+    </div>
+    <button mat-icon-button class="modal-close-button" aria-label="Close dialog" (click)="onCloseClick()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+    <form [formGroup]="StaffForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+          <mat-form-field class="example-full-width">
+            <mat-label>First name</mat-label>
+            <input id="firstName" matInput formControlName="firstName" name="firstName" [(ngModel)]="data.firstName"
+              [disabled]="StaffForm.get('firstName')?.untouched === true" required>
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix>face</mat-icon>
+            <mat-error *ngIf="StaffForm?.get('firstName')?.hasError('required')">
+              First name is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+          <mat-form-field class="example-full-width">
+            <mat-label>Last name</mat-label>
+            <input id="lastName" matInput formControlName="lastName" name="lastName" [(ngModel)]="data.lastName"
+              [disabled]="StaffForm.get('lastName')?.untouched === true" required>
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix>face</mat-icon>
+            <mat-error *ngIf="StaffForm.get('lastName')?.hasError('required')">
+              Last name is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+          <mat-form-field class="example-full-width ">
+            <mat-label>Staff Type</mat-label>
+            <mat-select matInput formControlName="typeStaff" [(ngModel)]="data.typeStaff" required>
+              <mat-option [value]="'Secretary'">
+                Secretary
+              </mat-option>
+              <mat-option [value]="'Doctor'">
+                Doctor
+              </mat-option>
+              <mat-option [value]="'infermier'">
+                Infermier
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="StaffForm.get('typeStaff')?.hasError('required')">
+              Type is required
+            </mat-error>
+          </mat-form-field>
+        </div> -->
+
+
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
+          <mat-form-field class="example-full-width">
+            <mat-label>Speciality</mat-label>
+            <mat-select matInput formControlName="speciality" [(ngModel)]="data.speciality"
+              [required]>
+              <mat-option [value]="'cariology'">
+                cariology
+              </mat-option>
+              <mat-option [value]="'radiology'">
+                Radiology
+              </mat-option>
+              <mat-option [value]="'orthopedics'">
+                Orthopedics
+              </mat-option>
+              <mat-option [value]="'pediatrics'">
+                Pediatrics
+              </mat-option>
+              <mat-option [value]="'psychiatry'">
+                Psychiatry
+              </mat-option>
+              <mat-option [value]="'surgery'">
+                Surgery
+              </mat-option>
+              <mat-option [value]="'neurology'">
+                Neurology
+              </mat-option>
+              <mat-option [value]="'gastroenterology'">
+                Gastroenterology
+              </mat-option>
+              <mat-option [value]="'ophthalmology'">
+                Ophthalmology
+              </mat-option>
+              <mat-option [value]="'endocrinology'">
+                Endocrinology
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="StaffForm.get('speciality')?.hasError('required')">Speciality is required</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width">
+            <mat-label>Profesional Email</mat-label>
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix>email</mat-icon>
+
+            <input type="email" id="professionalEmail" matInput formControlName="professionalEmail"
+              name="professionalEmail" [(ngModel)]="data.professionalEmail"
+              [disabled]="StaffForm.get('professionalEmail')?.untouched === true" required>
+            <mat-error *ngIf="StaffForm.get('professionalEmail')?.hasError('required')">
+              Profesional Email is required.
+            </mat-error>
+            <mat-error *ngIf="StaffForm.get('professionalEmail')?.hasError('email')">
+              Profesional Email is not valid.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width">
+            <mat-label>Identifier</mat-label>
+            <mat-error *ngIf="StaffForm?.get('identifier')?.hasError('required')">identifier is
+              required</mat-error>
+            <mat-error *ngIf="StaffForm?.get('identifier')?.hasError('duplicated')">identifier is
+              duplicated</mat-error>
+            <input id="identifier" matInput formControlName="identifier" name="identifier" [(ngModel)]="data.identifier"
+              [disabled]="StaffForm.get('identifier')?.untouched === true" required>
+            <mat-icon matSuffix>lock</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+   
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+          <mat-form-field class="example-full-width">
+            <mat-label>Phone number</mat-label>
+            <input matInput formControlName="phoneNumber" type="tel"[(ngModel)]="data.phoneNumber">
+            <mat-icon class="material-icons-two-tone color-icon" matSuffix>phone</mat-icon>
+            <mat-error *ngIf="StaffForm.get('phoneNumber')?.hasError('required')">
+              Please enter a valid phone
+            </mat-error>
+            <mat-error *ngIf="StaffForm.get('phoneNumber')?.hasError('phoneNumberInvalidLength')">
+              Phone number must have exactly 8 digits
+            </mat-error>
+            <mat-error *ngIf="StaffForm.get('phoneNumber')?.hasError('phoneNumberNotUnique')">
+              Phone number must be unique
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+          <mat-form-field class="example-full-width">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address" required>
+            <mat-icon class="material-icons-two-tone color-icon" matSuffix>location_on</mat-icon>
+            <mat-error *ngIf="StaffForm.get('address')?.hasError('required')">
+              Address is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width ">
+            <mat-label>Gender</mat-label>
+            <mat-select matInput formControlName="gender" [(ngModel)]="data.gender"
+              [disabled]="StaffForm.get('gender')?.untouched === true" required>
+              <mat-option [value]="'Male'">
+                Male
+              </mat-option>
+              <mat-option [value]="'Female'">
+                Female
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="StaffForm.get('gender')?.hasError('required')">
+              Gender is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+      </div>
+
+
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <div class="example-button-row">
+
+            <button mat-raised-button [disabled]="!StaffForm.valid " color="primary" [mat-dialog-close]="1"
+              (click)="saveUpdateStaff()">Update</button>
+            <button mat-raised-button color="warn" tabindex="-1" (click)="onCloseClick()">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+
+<div class="addContainer">
+  <div class="modalHeader" style="margin-bottom: 20px;">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <!--<img [src]='' alt="avatar">-->
+        <div class="modal-about">
+         <!--{{dialogTitle}}-->
+         <h2>Update Patient</h2>
+        </div>
+      </div>
+    </div>
+    <button mat-icon-button  class="modal-close-button" aria-label="Close dialog" (click)="onCloseClick()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+    <form  [formGroup]="PatienttForm" (ngSubmit)="onSubmit()" >
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>FirstName</mat-label>
+            <mat-error *ngIf="PatienttForm.get('firstName')?.hasError('required')">firstName is required</mat-error>
+            <input id="firstName" matInput formControlName="firstName" name="firstName"  [(ngModel)] ="data.firstName"  [disabled]="PatienttForm.get('firstName')?.untouched === true" required>
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix></mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>LastName</mat-label>
+            <mat-error *ngIf="PatienttForm.get('lastName')?.hasError('required')">lastName is required</mat-error>
+            <input id="lastName" matInput formControlName="lastName" name="lastName"  [(ngModel)] ="data.lastName"  [disabled]="PatienttForm.get('lastName')?.untouched === true" required>
+            <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix></mat-icon>
+          </mat-form-field>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+          <mat-form-field class="example-full-width mb-3" appearance="outline">
+            <mat-label>Gender</mat-label>
+            <mat-select matInput formControlName="gender" [(ngModel)]="data.gender" [disabled]="PatienttForm.get('gender')?.untouched === true" required>
+              <mat-option [value]="'Male'">Male</mat-option>
+              <mat-option [value]="'Female'">Female</mat-option>
+            </mat-select>
+            <mat-error *ngIf="PatienttForm.get('gender')?.hasError('required')">Gender is required</mat-error>
+          </mat-form-field>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <div class="example-button-row">
+
+            <button mat-raised-button [disabled]="!PatienttForm.valid " color="primary" [mat-dialog-close]="1"
+            (click)="saveUpdatePatient()">Update</button>
+            <button mat-raised-button color="warn" tabindex="-1" (click)="onCloseClick()">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
